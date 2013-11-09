@@ -38,23 +38,26 @@ LOCAL_CFLAGS:= -DLOG_TAG=\"SurfaceFlinger\"
 LOCAL_CFLAGS += -DGL_GLEXT_PROTOTYPES -DEGL_EGLEXT_PROTOTYPES
 
 ifeq ($(TARGET_BOARD_PLATFORM),omap4)
-	LOCAL_CFLAGS += -DHAS_CONTEXT_PRIORITY
+        LOCAL_CFLAGS += -DHAS_CONTEXT_PRIORITY
 endif
 ifeq ($(TARGET_BOARD_PLATFORM),s5pc110)
-	LOCAL_CFLAGS += -DHAS_CONTEXT_PRIORITY
+        LOCAL_CFLAGS += -DHAS_CONTEXT_PRIORITY
 endif
 
 ifeq ($(TARGET_DISABLE_TRIPLE_BUFFERING),true)
-	LOCAL_CFLAGS += -DTARGET_DISABLE_TRIPLE_BUFFERING
+        LOCAL_CFLAGS += -DTARGET_DISABLE_TRIPLE_BUFFERING
 endif
 
 ifeq ($(BOARD_EGL_NEEDS_LEGACY_FB),true)
-	LOCAL_CFLAGS += -DBOARD_EGL_NEEDS_LEGACY_FB
+        LOCAL_CFLAGS += -DBOARD_EGL_NEEDS_LEGACY_FB
         ifeq ($(TARGET_BOARD_PLATFORM),exynos4)
-	    LOCAL_CFLAGS += -DEGL_NEEDS_FNW
+            LOCAL_CFLAGS += -DEGL_NEEDS_FNW
         endif
         ifeq ($(TARGET_QCOM_DISPLAY_VARIANT), legacy)
-	    LOCAL_CFLAGS += -DEGL_NEEDS_FNW
+            LOCAL_CFLAGS += -DEGL_NEEDS_FNW
+        endif
+        ifeq ($(TARGET_QCOM_DISPLAY_VARIANT), legacy-caf)
+            LOCAL_CFLAGS += -DEGL_NEEDS_FNW
         endif
 endif
 
@@ -89,17 +92,17 @@ endif
 LOCAL_CFLAGS += -fvisibility=hidden
 
 LOCAL_SHARED_LIBRARIES := \
-	libcutils \
-	liblog \
-	libdl \
-	libhardware \
-	libutils \
-	libEGL \
-	libGLESv1_CM \
-	libGLESv2 \
-	libbinder \
-	libui \
-	libgui
+        libcutils \
+        liblog \
+        libdl \
+        libhardware \
+        libutils \
+        libEGL \
+        libGLESv1_CM \
+        libGLESv2 \
+        libbinder \
+        libui \
+        libgui
 
 ifeq ($(BOARD_USES_SAMSUNG_HDMI),true)
         LOCAL_CFLAGS += -DSAMSUNG_HDMI_SUPPORT
@@ -119,14 +122,14 @@ include $(CLEAR_VARS)
 LOCAL_CFLAGS:= -DLOG_TAG=\"SurfaceFlinger\"
 
 LOCAL_SRC_FILES:= \
-	main_surfaceflinger.cpp 
+        main_surfaceflinger.cpp 
 
 LOCAL_SHARED_LIBRARIES := \
-	libsurfaceflinger \
-	libcutils \
-	liblog \
-	libbinder \
-	libutils
+        libsurfaceflinger \
+        libcutils \
+        liblog \
+        libbinder \
+        libutils
 
 LOCAL_MODULE:= surfaceflinger
 
@@ -142,9 +145,9 @@ LOCAL_SRC_FILES:= \
     DdmConnection.cpp
 
 LOCAL_SHARED_LIBRARIES := \
-	libcutils \
-	liblog \
-	libdl
+        libcutils \
+        liblog \
+        libdl
 
 LOCAL_MODULE:= libsurfaceflinger_ddmconnection
 

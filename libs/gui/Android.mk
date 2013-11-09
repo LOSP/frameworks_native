@@ -2,42 +2,42 @@ LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES:= \
-	IGraphicBufferConsumer.cpp \
-	IConsumerListener.cpp \
-	BitTube.cpp \
-	BufferItemConsumer.cpp \
-	BufferQueue.cpp \
-	ConsumerBase.cpp \
-	CpuConsumer.cpp \
-	DisplayEventReceiver.cpp \
-	GLConsumer.cpp \
-	GraphicBufferAlloc.cpp \
-	GuiConfig.cpp \
-	IDisplayEventConnection.cpp \
-	IGraphicBufferAlloc.cpp \
-	IGraphicBufferProducer.cpp \
-	ISensorEventConnection.cpp \
-	ISensorServer.cpp \
-	ISurfaceComposer.cpp \
-	ISurfaceComposerClient.cpp \
-	LayerState.cpp \
-	Sensor.cpp \
-	SensorEventQueue.cpp \
-	SensorManager.cpp \
-	Surface.cpp \
-	SurfaceControl.cpp \
-	SurfaceComposerClient.cpp \
-	SyncFeatures.cpp \
+        IGraphicBufferConsumer.cpp \
+        IConsumerListener.cpp \
+        BitTube.cpp \
+        BufferItemConsumer.cpp \
+        BufferQueue.cpp \
+        ConsumerBase.cpp \
+        CpuConsumer.cpp \
+        DisplayEventReceiver.cpp \
+        GLConsumer.cpp \
+        GraphicBufferAlloc.cpp \
+        GuiConfig.cpp \
+        IDisplayEventConnection.cpp \
+        IGraphicBufferAlloc.cpp \
+        IGraphicBufferProducer.cpp \
+        ISensorEventConnection.cpp \
+        ISensorServer.cpp \
+        ISurfaceComposer.cpp \
+        ISurfaceComposerClient.cpp \
+        LayerState.cpp \
+        Sensor.cpp \
+        SensorEventQueue.cpp \
+        SensorManager.cpp \
+        Surface.cpp \
+        SurfaceControl.cpp \
+        SurfaceComposerClient.cpp \
+        SyncFeatures.cpp \
 
 LOCAL_SHARED_LIBRARIES := \
-	libbinder \
-	libcutils \
-	libEGL \
-	libGLESv2 \
-	libsync \
-	libui \
-	libutils \
-	liblog
+        libbinder \
+        libcutils \
+        libEGL \
+        libGLESv2 \
+        libsync \
+        libui \
+        libutils \
+        liblog
 
 ifeq ($(BOARD_EGL_NEEDS_LEGACY_FB),true)
     LOCAL_CFLAGS += -DBOARD_EGL_NEEDS_LEGACY_FB
@@ -49,16 +49,19 @@ endif
 LOCAL_MODULE:= libgui
 
 ifeq ($(TARGET_BOARD_PLATFORM), tegra)
-	LOCAL_CFLAGS += -DDONT_USE_FENCE_SYNC
+        LOCAL_CFLAGS += -DDONT_USE_FENCE_SYNC
 endif
 ifeq ($(TARGET_BOARD_PLATFORM), tegra3)
-	LOCAL_CFLAGS += -DDONT_USE_FENCE_SYNC
+        LOCAL_CFLAGS += -DDONT_USE_FENCE_SYNC
 endif
 ifeq ($(TARGET_QCOM_DISPLAY_VARIANT), legacy)
-	LOCAL_CFLAGS += -DDONT_USE_FENCE_SYNC
+        LOCAL_CFLAGS += -DDONT_USE_FENCE_SYNC
+endif
+ifeq ($(TARGET_QCOM_DISPLAY_VARIANT), legacy-caf)
+        LOCAL_CFLAGS += -DDONT_USE_FENCE_SYNC
 endif
 ifeq ($(TARGET_TOROPLUS_RADIO), true)
-	LOCAL_CFLAGS += -DTOROPLUS_RADIO
+        LOCAL_CFLAGS += -DTOROPLUS_RADIO
 endif
 
 include $(BUILD_SHARED_LIBRARY)

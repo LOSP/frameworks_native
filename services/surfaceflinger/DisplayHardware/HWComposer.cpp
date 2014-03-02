@@ -408,8 +408,8 @@ void HWComposer::vsync(int disp, int64_t timestamp) {
             // is a bug in the HWC implementation, but filter the extra events
             // out here so they don't cause havoc downstream.
             if (timestamp == mLastHwVSync[disp]) {
-                ALOGW("Ignoring duplicate VSYNC event from HWC (t=%lld)",
-                        timestamp);
+                // Just return, in order to ignore the event
+                // Do not log, or it will cause memory leak
                 return;
             }
 
